@@ -8,13 +8,16 @@ equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
 var isTruthy = function(arg){
-	return arg ? true :false
+	// return arg ? true : false;
+	return !!arg;
 }
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
 > isTruthy();
 false
 > isTruthy(0)
+false
+> isTruthy(-0)
 false
 > isTruthy(null)
 false
@@ -25,6 +28,8 @@ false
 > isTruthy('')
 false
 > isTruthy("")
+false
+> isTruthy(NaN)
 false
 
 /*
@@ -61,12 +66,12 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `quantidadePessoas` - Number - zero por padrão
 */
 var carro = {
-	marca 		: '',
-	modelo		: '',
-	placa 		: '',
-	ano   		: 0,
-	cor   		: '',
-	qtdPortas 	: 0,
+	marca 		: 'VW',
+	modelo		: 'Gol',
+	placa 		: 'AAA-1111',
+	ano   		: 1986,
+	cor   		: 'Preto',
+	qtdPortas 	: 2,
 	assentos	: 5,
 	qtdPessoas	: 0
 };
@@ -106,7 +111,7 @@ Crie um método chamado `obterMarcaModelo`, que retorne:
 Para retornar os valores de marca e modelo, utilize os métodos criados.
 */
 carro.obterMarcaModelo = function (){
-	return "Esse carro é um " + carro.marca + " " + carro.modelo;
+	return "Esse carro é um " + carro.obterMarca() + " " + carro.obterModelo();
 }
 
 /*
@@ -127,15 +132,21 @@ citado acima, no lugar de "pessoas".
 */
 carro.addPessoa = function(num){
 	
-	carro.qtdPessoas > 5 ? return "O carro já está lotado!" : ;
+	var totalPessoas = carro.qtdPessoas + num;
+	var assentosLivres = carro.assentos - carro.qtdPessoas;
+	var pessoa = assentosLivres === 1 ? ' pessoa' : ' pessoas';	
 
-	carro.qtdPessoas + num > 5 ? return "Só cabem mais " + 5 - carro.qtdPessoas+ " pessoas" : ;
+	if( carro.qtdPessoas === carro.assentos && totalPessoas >= carro.assentos){
+		return " O Carro já está lotado!";
+	}
 
-	5 - carro.qtdPessoas === 1 ? return "pessoa" : ;
+	if ( totalPessoas > carro.assentos){
+		return "Só cabem mais " + assentosLivres +  pessoa;
+	}
 
-	carro.qtdPessoa += num;
+	carro.qtdPessoas += num;
 
-	return "Já temos " + carro.qtdPessoa + "pessoas no carro!";
+	return "Já temos " + carro.qtdPessoas + " pessoas no carro!";
 }
 
 /*
@@ -146,38 +157,57 @@ retornar algum valor.
 
 Qual a cor atual do carro?
 */
-?
+> carro.obterCor()
+'Preto'
+
 
 // Mude a cor do carro para vermelho.
-?
+> carro.mudarCor('Vermelho')
 
 // E agora, qual a cor do carro?
-?
+> carro.obterCor()
+'Vermelho'
+
 
 // Mude a cor do carro para verde musgo.
-?
+> carro.mudarCor('Verde musgo')
+
 
 // E agora, qual a cor do carro?
-?
+> carro.obterCor()
+'Verde musgo'
+
 
 // Qual a marca e modelo do carro?
-?
+> carro.obterMarcaModelo()
+'Esse carro é um VW Gol'
+
 
 // Adicione 2 pessoas no carro.
-?
+> carro.addPessoa(2)
+'Já temos 2pessoas no carro!'
+
 
 // Adicione mais 4 pessoas no carro.
-?
+> carro.addPessoa(4)
+'Só cabem mais 3pessoas'
+
 
 // Faça o carro encher.
-?
+> carro.addPessoa(3)
+'Já temos 5pessoas no carro!'
 
 // Tire 4 pessoas do carro.
-?
+> carro.addPessoa(-4);
+'Já temos 1 pessoas no carro!'
 
 // Adicione 10 pessoas no carro.
-?
+> carro.addPessoa(10);
+'Só cabem mais 4 pessoas'
+
 
 // Quantas pessoas temos no carro?
-?
+> carro.qtdPessoas
+1
+
 ```
