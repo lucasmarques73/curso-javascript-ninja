@@ -75,3 +75,5 @@ console.log( 'Números ímpares entre 111 e 125:' );
 for (var x = 111; x <= 125; x++) {
     (x % 2) !== 0 ? console.log(x) : '';
 }
+
+//Teste
