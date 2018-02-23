@@ -55,23 +55,25 @@ function calculator(op){
   return function(num1,num2){
     switch(op){
       case '+':
-        console.log(num1 + op + num2 + " = " + (num1+num2));
+        var result = num1+num2;
       break;
       case '-':
-        console.log(num1 + op + num2 + " = " + (num1-num2));
+        var result = num1-num2;
       break;
       case '*':
-        console.log(num1 + op + num2 + " = " + (num1*num2));
+        var result = num1*num2;
       break;
       case '/':
-        console.log(num1 + op + num2 + " = " + (num1/num2));
+        var result = num1/num2;
       break;
       case '%':
-        console.log(num1 + op + num2 + " = " + (num1%num2));
+        var result = num1%num2;
       break;
       default:
-      console.log("Operação Inválida");
+      return "Operação Inválida";
     }
+
+    return num1 + op + num2 + " = " + result;
   }
 
 }
@@ -85,7 +87,7 @@ var sum = calculator('+');
 /*
 Agora `sum` é uma função. Mostre no console a soma de dois números, usando ela.
 */
-sum(1,2);
+console.log(sum(1,2));
 
 /*
 Agora, declare algumas variáveis com os nomes `subtraction`, `multiplication`,
@@ -102,7 +104,7 @@ Faça uma operação com cada uma das funções criadas acima, mostrando o resul
 no console.
 */
 
-sub(1,2);
-mult(1,2);
-div(1,2);
-mod(1,2);
+console.log(sub(1,2));
+console.log(mult(1,2));
+console.log(div(1,2));
+console.log(mod(1,2));
